@@ -1,0 +1,37 @@
+<!doctype HTML 5>
+<html lang="en">
+ <head>
+  <title>Screen Time Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="stcalc.css">
+        <script src="stcalc.js"></script>
+ </head>
+ <body>
+     <div class="intro">
+         <h1>Screen Time Calculator</h1>
+         <p>Discover just how much time you spend on your Smartphone and how much of your life it is taking up.</p>
+     </div>
+     <div class="stcalc" id="stcalc">
+         <p class="intruction">Enter Your Average Daily Screen Time</p>
+         <label for="hrs" id="hrslabel" >hrs : </label>
+         <input type="number"  maxlength="2" min="0" max="15" class="time" id="hrs">
+         <label for="mins" id="minslabel">mins :</label>
+         <input type="number"  maxlength="2" min="0" max="59" class="time" id="mins">
+         <button class="calcbutton" id="calcbutton" onclick="calculateScreenTime()">Calculate</button>
+     </div>
+     <div class="stcalcresults">
+        <div class="results" id="sevenDays">
+            
+        </div>
+        <div class="results" id="month">
+            
+        </div>
+        <div class="results" id="year">
+            
+        </div>
+        <div class="results" id="lifeTime">
+            
+        </div>
+     </div>
+ </body>

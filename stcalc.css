@@ -1,0 +1,30 @@
+.time {
+    max-width:100px;
+}
+body {
+    background-color:#daf5f2;
+}
+
+.resultsCard {
+    background-color:#fce29a;
+    margin:auto;
+    max-width:80%;
+    border-radius:20px;
+}
+
+.resultsCard p {
+    color:red;
+    margin-left:10px;
+    
+}
+
+.resultsCard h3 {
+    color: #f211d4;
+    text-align:center;
+    margin:2rem auto;
+    
+}
+
+.result {
+    padding-bottom:30px;
+}
