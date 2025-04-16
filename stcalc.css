@@ -8,23 +8,25 @@ body {
   box-sizing: border-box;
 }
 
+
+
 .resultsCard {
     font-size:1rem;
-    background-color:#fce29a;
     margin:auto;
     max-width:600px;
     border-radius:20px;
 }
 
 .resultsCard p {
-    color:red;
+    color:black;
+    text-align:left;
     margin-left:10px;
     
 }
 
 .resultsCard h3 {
     color: #f211d4;
-    text-align:center;
+    text-align:left;
     margin:2rem auto;
     
 }
@@ -43,6 +45,13 @@ body {
     padding:10px;
     font-size: 1rem;
 }
+
+.stcalc input,
+textarea,
+select {
+  font-size: max(16px, 1em);
+}
+
 
 .calcbutton {
   background-color: #004080;

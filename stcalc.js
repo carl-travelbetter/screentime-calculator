@@ -25,6 +25,7 @@ function calculateScreenTime()
     calculateMonth(hrs, mins);
     calculateYear(hrs, mins);
     calculateLifetime();
+    outputResults();
     
 }
 
@@ -36,18 +37,7 @@ function calculateLifetime()
     lifeTimeYears = (lifeTimeDays / 365).toFixed(2);
     console.log("CLT: This is "+lifeTimeYears+" years on your phone");
     
-    //output results
-    const output = document.getElementById("lifeTime");
-    output.innerHTML = "";
     
-    const card = document.createElement("div");
-    card.classList.add("resultsCard");
-        card.innerHTML = `
-            <h3>Life Time Results</h3>
-            <p><strong>Days Across a Life Time</strong> ${lifeTimeDays}</p>
-            <p>This is <strong> ${lifeTimeYears} years </strong> of you life staring at your Screen</p>
-        `;
-    output.appendChild(card);
 }
 
 function calculateYear(hrs, mins)
@@ -81,18 +71,7 @@ function calculateYear(hrs, mins)
     daysPerYear = days;
     console.log("C365D: Days "+days);
     
-    //Output Results
-    const output = document.getElementById("year");
-    output.innerHTML = "";
     
-    const card = document.createElement("div");
-    card.classList.add("resultsCard");
-        card.innerHTML = `
-            <h3>365 Days / 1 Year </h3>
-            <p><strong>Total Time</strong> ${hrsPerYear} hrs ${minPerYear} mins</p>
-            <p><strong>Days Per Year</strong> ${daysPerYear} </p>
-        `;
-    output.appendChild(card);
 }
 
 function calculateMonth(hrs, mins)
@@ -125,18 +104,7 @@ function calculateMonth(hrs, mins)
     console.log("C30D: Results in Day "+days);
     daysPerMonth = days;
     
-    //Output Results
-    const output = document.getElementById("month");
-    output.innerHTML = "";
-    
-    const card = document.createElement("div");
-    card.classList.add("resultsCard");
-        card.innerHTML = `
-            <h3>30 Day / 1 Month Results</h3>
-            <p><strong>Total Time</strong> ${hrsPerMonth} hrs ${minsPerMonth} mins</p>
-            <p><strong>Days Per Month</strong> ${daysPerMonth} </p>
-        `;
-    output.appendChild(card);
+   
     
 }
 
@@ -168,21 +136,17 @@ function calculateSevenDays(hrs, mins)
     }
     
     console.log("C7D: Result for a week: Hrs "+hrsPerWeek+" mins "+minsPerWeek);
-    const output = document.getElementById("sevenDays");
-    output.innerHTML = "";
+    
+    
+    
+    
     
     let totalMinutes = (hrsPerWeek*60)+minsPerWeek;
-    console.log("C7D: Total Minutes "+totalMinutes);
     let days = calcDays(totalMinutes);
     daysPerWeek = days;
-    const card = document.createElement("div");
-    card.classList.add("resultsCard");
-        card.innerHTML = `
-            <h3>7 Day Results</h3>
-            <p><strong>Total Time</strong> ${hrsPerWeek} hrs ${minsPerWeek} mins</p>
-            <p><strong>Days Per Week</strong> ${daysPerWeek} </p>
-        `;
-    output.appendChild(card);
+    console.log("C7D: Total Minutes "+totalMinutes);
+    
+    
 }
 
 function calcDays(totalMinutes) 
@@ -194,7 +158,46 @@ function calcDays(totalMinutes)
     
 }
 
-function outPutResults()
+function outputResults()
 {
+    //output results
+    const output = document.getElementById("results");
+    output.innerHTML = "";
     
+    const cardLife = document.createElement("div");
+    cardLife.classList.add("resultsCard");
+        cardLife.innerHTML = `
+            <h3>Life Time Results</h3>
+            <p><strong>Days Across a Life Time</strong> ${lifeTimeDays}</p>
+            <p>This is <strong> ${lifeTimeYears} years </strong> of you life staring at your Screen</p>
+        `;
+    output.appendChild(cardLife);
+    
+    
+    const cardYear = document.createElement("div");
+    cardYear.classList.add("resultsCard");
+        cardYear.innerHTML = `
+            <h3>365 Days / 1 Year </h3>
+            <p><strong>Total Time</strong> ${hrsPerYear} hrs ${minPerYear} mins</p>
+            <p><strong>Days Per Year</strong> ${daysPerYear} </p>
+        `;
+    output.appendChild(cardYear);
+    
+    const cardMonth = document.createElement("div");
+    cardMonth.classList.add("resultsCard");
+        cardMonth.innerHTML = `
+            <h3>30 Day / 1 Month Results</h3>
+            <p><strong>Total Time</strong> ${hrsPerMonth} hrs ${minsPerMonth} mins</p>
+            <p><strong>Days Per Month</strong> ${daysPerMonth} </p>
+        `;
+    output.appendChild(cardMonth);
+    
+    const cardDay = document.createElement("div");
+    cardDay.classList.add("resultsCard");
+        cardDay.innerHTML = `
+            <h3>7 Day Results</h3>
+            <p><strong>Total Time</strong> ${hrsPerWeek} hrs ${minsPerWeek} mins</p>
+            <p><strong>Days Per Week</strong> ${daysPerWeek} </p>
+        `;
+    output.appendChild(cardDay);
 }
