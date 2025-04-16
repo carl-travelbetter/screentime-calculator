@@ -13,6 +13,8 @@ let minsPerYear = 0;
 let daysPerYear = 0;
 let lifeTimeDays = 0;
 let lifeTimeYears = 0;
+let restOfYourLifeScreenTime = 0;
+let ageSubmitted = "N";
 
 function calculateScreenTime()
 {
@@ -20,21 +22,41 @@ function calculateScreenTime()
     let results = document.getElementById("stcalcresults");
     const hrs = document.getElementById("hrs").value;
     const mins = document.getElementById("mins").value;
+    const age = document.getElementById("age").value;
     console.log("Hrs = "+hrs+" Mins = "+mins);
     calculateSevenDays(hrs, mins);
     calculateMonth(hrs, mins);
     calculateYear(hrs, mins);
     calculateLifetime();
+    if (age > 0)
+    {
+        console.log("Age submitted");
+        ageSubmitted = "Y";
+        calculateHowMuchLeft(age);
+    }
+    else
+    {
+        console.log("Age Not Submitted");
+        ageSubmitted - "N";
+    }
+    
     outputResults();
     
+}
+
+function calculateHowMuchLeft(age)
+{
+    console.log("How Much Left");
+    let yearsLeft = 80 - age;
+    restOfYourLifeScreenTime = ((yearsLeft*daysPerYear) / 365).toFixed(2);
 }
 
 function calculateLifetime()
 {
     console.log("CLT: Year Days "+daysPerYear);
-    lifeTimeDays = daysPerYear * lifeTime;
+    lifeTimeDays = parseInt(daysPerYear * lifeTime);
     console.log("CLT: Result Days "+lifeTimeDays);
-    lifeTimeYears = (lifeTimeDays / 365).toFixed(2);
+    lifeTimeYears = parseInt(lifeTimeDays / 365);
     console.log("CLT: This is "+lifeTimeYears+" years on your phone");
     
     
@@ -164,40 +186,42 @@ function outputResults()
     const output = document.getElementById("results");
     output.innerHTML = "";
     
-    const cardLife = document.createElement("div");
-    cardLife.classList.add("resultsCard");
-        cardLife.innerHTML = `
-            <h3>Life Time Results</h3>
-            <p><strong>Days Across a Life Time</strong> ${lifeTimeDays}</p>
-            <p>This is <strong> ${lifeTimeYears} years </strong> of you life staring at your Screen</p>
-        `;
-    output.appendChild(cardLife);
-    
-    
-    const cardYear = document.createElement("div");
-    cardYear.classList.add("resultsCard");
-        cardYear.innerHTML = `
-            <h3>365 Days / 1 Year </h3>
-            <p><strong>Total Time</strong> ${hrsPerYear} hrs ${minPerYear} mins</p>
-            <p><strong>Days Per Year</strong> ${daysPerYear} </p>
-        `;
-    output.appendChild(cardYear);
-    
-    const cardMonth = document.createElement("div");
-    cardMonth.classList.add("resultsCard");
-        cardMonth.innerHTML = `
-            <h3>30 Day / 1 Month Results</h3>
-            <p><strong>Total Time</strong> ${hrsPerMonth} hrs ${minsPerMonth} mins</p>
-            <p><strong>Days Per Month</strong> ${daysPerMonth} </p>
-        `;
-    output.appendChild(cardMonth);
-    
     const cardDay = document.createElement("div");
-    cardDay.classList.add("resultsCard");
-        cardDay.innerHTML = `
-            <h3>7 Day Results</h3>
-            <p><strong>Total Time</strong> ${hrsPerWeek} hrs ${minsPerWeek} mins</p>
-            <p><strong>Days Per Week</strong> ${daysPerWeek} </p>
-        `;
-    output.appendChild(cardDay);
+    if (ageSubmitted == "N")
+    {
+        cardDay.classList.add("resultsCard");
+            cardDay.innerHTML = `
+                <h3>Results</h3>
+                <p>You Spend...</p>
+                <p>${hrsPerWeek} hrs ${minsPerWeek} mins a week staring at a screen, or
+                ${daysPerWeek} days</p>
+                <p>${hrsPerMonth} hrs ${minsPerMonth} mins per month or ${daysPerMonth} days</p>
+                <p>${hrsPerYear} hrs ${minPerYear} mins per year, 
+                or ${daysPerYear} days</p>
+                <h3>Life Time</h3>
+                <p>This is ${lifeTimeDays} days across a fifty year adult lifetime</p>
+                <p>This is <strong> ${lifeTimeYears} years </strong> of you life staring at your Phone Screen</p>
+            `;
+        output.appendChild(cardDay);
+    }
+    else
+    {
+        cardDay.classList.add("resultsCard");
+            cardDay.innerHTML = `
+                <h3>Results</h3>
+                <p>You Spend...</p>
+                <p>${hrsPerWeek} hrs ${minsPerWeek} mins a week staring at a screen, or
+                ${daysPerWeek} days</p>
+                <p>${hrsPerMonth} hrs ${minsPerMonth} mins per month or ${daysPerMonth} days</p>
+                <p>${hrsPerYear} hrs ${minPerYear} mins per year, 
+                or ${daysPerYear} days</p>
+                <h3>Rest of you life...</h3>
+                <p>If you continue the same it will be ${restOfYourLifeScreenTime} years of your remaining life </p>
+                <p>Are you OK with that?</p>
+            `;
+        output.appendChild(cardDay);
+    }
+    
+    
+    
 }

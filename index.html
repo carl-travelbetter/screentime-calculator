@@ -13,16 +13,17 @@
          <p>Discover just how much time you spend on your Smartphone and how much of your life it is taking up.</p>
      </div>
      <div class="stcalc" id="stcalc">
-         <p class="intruction">Enter Your Average Daily Screen Time</p>
-         <label for="hrs" id="hrslabel" >hrs : </label>
-         <input type="number"  maxlength="2" min="0" max="15" class="time" id="hrs">
+         <p class="intruction">Enter Daily Screen Time</p>
+         <label for="hrs" id="hrslabel" >hrs :</label>
+         <input type="number"  maxlength="2" min="0" max="15" class="time" id="hrs" aria-describedby="hrs-help">
          <label for="mins" id="minslabel">mins :</label>
-         <input type="number"  maxlength="2" min="0" max="59" class="time" id="mins">
-         <hr>
-         <p class="optional"><u>Optional</u></u></p>
+         <input type="number"  maxlength="2" min="0" max="59" class="time" id="mins"><br>
+         
+         <label for="age" id="agelabel"> (Optional) Enter your age:</label>
          <input type="number" maxlength="2" min="13" max="99" class="age" id="age"><br>
-         <button class="calcbutton" id="calcbutton" onclick="calculateScreenTime()">Calculate</button>
-     
+        
+         <button class="calcbutton" id="calcbutton" onclick="calculateScreenTime()">Calculate</button><br>
+         <small id="hrs-help"><a href="#faq">How to find your screen time</a></small><br>
         <div class="results" id="results">
             
         </div>
