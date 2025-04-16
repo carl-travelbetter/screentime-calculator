@@ -1,5 +1,18 @@
 let yearDays = 0;
 const lifeTime = 50;
+let hrsPerDay = 0;
+let minsPerDay = 0;
+let hrsPerWeek = 0;
+let minsPerWeek = 0;
+let daysPerWeek = 0;
+let hrsPerMonth = 0;
+let minsPerMonth = 0;
+let daysPerMonth = 0;
+let hrsPerYear = 0;
+let minsPerYear = 0;
+let daysPerYear = 0;
+let lifeTimeDays = 0;
+let lifeTimeYears = 0;
 
 function calculateScreenTime()
 {
@@ -17,11 +30,11 @@ function calculateScreenTime()
 
 function calculateLifetime()
 {
-    console.log("CLT: Year Days "+yearDays);
-    lifeTimeDays = yearDays * lifeTime;
+    console.log("CLT: Year Days "+daysPerYear);
+    lifeTimeDays = daysPerYear * lifeTime;
     console.log("CLT: Result Days "+lifeTimeDays);
-    years = (lifeTimeDays / 365).toFixed(2);
-    console.log("CLT: This is "+years+" years on your phone");
+    lifeTimeYears = (lifeTimeDays / 365).toFixed(2);
+    console.log("CLT: This is "+lifeTimeYears+" years on your phone");
     
     //output results
     const output = document.getElementById("lifeTime");
@@ -32,7 +45,7 @@ function calculateLifetime()
         card.innerHTML = `
             <h3>Life Time Results</h3>
             <p><strong>Days Across a Life Time</strong> ${lifeTimeDays}</p>
-            <p>This is <strong> ${years} years </strong> of you life staring at your Screen</p>
+            <p>This is <strong> ${lifeTimeYears} years </strong> of you life staring at your Screen</p>
         `;
     output.appendChild(card);
 }
@@ -41,33 +54,31 @@ function calculateYear(hrs, mins)
 {
     console.log("C365D: Calculate 365 Days (1 Year)...");
     console.log("C365D: hrs "+hrs+" mins"+mins);
-    let yearHrs = +hrs*365;
-    let yearMins = +mins*365;
-    console.log("C365D: year hrs "+yearHrs+" mins "+yearMins);
-    let yearMinsToHours = parseInt(yearMins / 60);
-    let minResultYear = 0;
-    let hrsResultYear = 0;
+    hrsYearCalc = +hrs*365;
+    minsYearCalc = +mins*365;
+    console.log("C365D: year hrs "+hrsYearCalc+" mins "+minsYearCalc);
+    let yearMinsToHours = parseInt(minsYearCalc / 60);
     let takeAwayMins = 0;
     if (yearMinsToHours < 1)
     {
         console.log("C365D: yearly mins less than 1 hour");
-        minResultYear = +yearMins;
-        hrsResultYear = +yearHrs;
+        minsPerYear = +yearMins;
+        hrsPerYear = +yearHrs;
     }
     else
     {
         takeAwayMins = +yearMinsToHours * 60;
-        minResultYear = +yearMins - +takeAwayMins;
-        hrsResultYear = +yearHrs + +yearMinsToHours;
+        minPerYear = +minsYearCalc - +takeAwayMins;
+        hrsPerYear = +hrsYearCalc + +yearMinsToHours;
         console.log("TakeAwayMins "+takeAwayMins);
-        console.log("MinResultYear "+minResultYear);
-        console.log("HrsResultsYear "+hrsResultYear);
+        console.log("MinResultYear "+minPerYear);
+        console.log("HrsResultsYear "+hrsPerYear);
     }
-    console.log("C365D: Results "+hrsResultYear+"hrs "+minResultYear+"mins");
-    let totalMinutes = (yearHrs * 60)+ +yearMins;
+    console.log("C365D: Results "+hrsPerYear+"hrs "+minPerYear+"mins");
+    let totalMinutes = (hrsYearCalc * 60)+ +minsYearCalc;
     let days = calcDays(totalMinutes);
     //set Year Days for LifeTime calcDays
-    yearDays = days;
+    daysPerYear = days;
     console.log("C365D: Days "+days);
     
     //Output Results
@@ -78,8 +89,8 @@ function calculateYear(hrs, mins)
     card.classList.add("resultsCard");
         card.innerHTML = `
             <h3>365 Days / 1 Year </h3>
-            <p><strong>Total Time</strong> ${hrsResultYear} hrs ${minResultYear} mins</p>
-            <p><strong>Days Per Month</strong> ${days} </p>
+            <p><strong>Total Time</strong> ${hrsPerYear} hrs ${minPerYear} mins</p>
+            <p><strong>Days Per Year</strong> ${daysPerYear} </p>
         `;
     output.appendChild(card);
 }
@@ -92,28 +103,27 @@ function calculateMonth(hrs, mins)
     let monthMins = +mins*30;
     console.log("C30D: month hrs "+monthHrs+" mins "+monthMins);
     let monthMinsToHours = parseInt(monthMins / 60);
-    let minResultMonth = 0;
-    let hrsResultMonth = 0;
     let takeAwayMins = 0;
     if (monthMinsToHours < 1)
     {
         console.log("C30D: monthly mins less than 1 hour");
-        minResultMonth = +monthMins;
-        hrsResultsMonth = +monthHrs;
+        minsPerMonth = +monthMins;
+        hrsPerMonth = +monthHrs;
     }
     else
     {
         takeAwayMins = monthMinsToHours * 60;
-        minResultMonth = +monthMins - +takeAwayMins;
-        hrsResultMonth = +monthHrs + +monthMinsToHours;
+        minsPerMonth = +monthMins - +takeAwayMins;
+        hrsPerMonth = +monthHrs + +monthMinsToHours;
         console.log("TakeAwayMins "+takeAwayMins);
-        console.log("MinResultMonth "+minResultMonth);
-        console.log("HrsResultsMonth "+hrsResultMonth);
+        console.log("MinResultMonth "+minsPerMonth);
+        console.log("HrsResultsMonth "+hrsPerMonth);
     }
-    console.log("C30D: Results "+hrsResultMonth+"hrs "+minResultMonth+"mins");
+    console.log("C30D: Results "+hrsPerMonth+"hrs "+minsPerMonth+"mins");
     let totalMins = (monthHrs*60)+ +monthMins;
     const days = calcDays(totalMins);
     console.log("C30D: Results in Day "+days);
+    daysPerMonth = days;
     
     //Output Results
     const output = document.getElementById("month");
@@ -123,8 +133,8 @@ function calculateMonth(hrs, mins)
     card.classList.add("resultsCard");
         card.innerHTML = `
             <h3>30 Day / 1 Month Results</h3>
-            <p><strong>Total Time</strong> ${hrsResultMonth} hrs ${minResultMonth} mins</p>
-            <p><strong>Days Per Month</strong> ${days} </p>
+            <p><strong>Total Time</strong> ${hrsPerMonth} hrs ${minsPerMonth} mins</p>
+            <p><strong>Days Per Month</strong> ${daysPerMonth} </p>
         `;
     output.appendChild(card);
     
@@ -139,40 +149,38 @@ function calculateSevenDays(hrs, mins)
     console.log("C7D: weekhr "+weekhrs+" weekmins "+weekmins);
     let weekMinsToHours = parseInt(weekmins / 60);
     console.log("C7D: Hours in Week Mins Ratio "+weekMinsToHours);
-    let minResultWeek = 0;
-    let hrsResultsWeek = 0;
     let takeAwayMins = 0;
     if (weekMinsToHours < 1)
     {
         console.log("C7D: Week Mins to Hours less than 1 hour");
-        minResultWeek = +weekmins;
-        hrsResultWeek = +weekhrs;
+        minsPerWeek = +weekmins;
+        hrsPerWeek = +weekhrs;
     }
     else 
     {
         takeAwayMins = weekMinsToHours * 60;
-        minResultWeek = +weekmins - +takeAwayMins;
-        hrsResultWeek = +weekhrs + +weekMinsToHours;
+        minsPerWeek = +weekmins - +takeAwayMins;
+        hrsPerWeek = +weekhrs + +weekMinsToHours;
         console.log("TakeAwayMins "+takeAwayMins);
-        console.log("MinResultWeel "+minResultWeek);
-        console.log("HrsResultsWeek "+hrsResultWeek);
+        console.log("MinResultWeel "+minsPerWeek);
+        console.log("HrsResultsWeek "+hrsPerWeek);
         
     }
     
-    console.log("C7D: Result for a week: Hrs "+hrsResultWeek+" mins "+minResultWeek);
+    console.log("C7D: Result for a week: Hrs "+hrsPerWeek+" mins "+minsPerWeek);
     const output = document.getElementById("sevenDays");
     output.innerHTML = "";
     
-    let totalMinutes = (hrsResultWeek*60)+minResultWeek;
+    let totalMinutes = (hrsPerWeek*60)+minsPerWeek;
     console.log("C7D: Total Minutes "+totalMinutes);
     let days = calcDays(totalMinutes);
-    
+    daysPerWeek = days;
     const card = document.createElement("div");
     card.classList.add("resultsCard");
         card.innerHTML = `
             <h3>7 Day Results</h3>
-            <p><strong>Total Time</strong> ${hrsResultWeek} hrs ${minResultWeek} mins</p>
-            <p><strong>Days Per Week</strong> ${days} </p>
+            <p><strong>Total Time</strong> ${hrsPerWeek} hrs ${minsPerWeek} mins</p>
+            <p><strong>Days Per Week</strong> ${daysPerWeek} </p>
         `;
     output.appendChild(card);
 }
@@ -183,5 +191,10 @@ function calcDays(totalMinutes)
     let days = (totalMinutes / 1440).toFixed(2);
     console.log("Days "+days);
     return days;
+    
+}
+
+function outPutResults()
+{
     
 }

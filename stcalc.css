@@ -2,14 +2,17 @@
     max-width:100px;
 }
 body {
-    background-color:#daf5f2;
-    font-size:16px;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .resultsCard {
+    font-size:1rem;
     background-color:#fce29a;
     margin:auto;
-    max-width:80%;
+    max-width:600px;
     border-radius:20px;
 }
 
@@ -28,4 +31,31 @@ body {
 
 .result {
     padding-bottom:30px;
+}
+
+.stcalc {
+    max-width:600px;
+    margin:auto;
+    text-align:center;
+    border: solid 1px red;
+    border-radius:20px;
+    background-color:#59f7f2;
+    padding:10px;
+    font-size: 1rem;
+}
+
+.calcbutton {
+  background-color: #004080;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.calcbutton:hover {
+  background-color: #0066cc;
 }
