@@ -91,13 +91,13 @@ function calculateYear(dailyMinutes)
     else
     {
         takeAwayMins = +yearMinsToHours * 60;
-        minPerYear = +minsYearCalc - +takeAwayMins;
+        minsPerYear = +minsYearCalc - +takeAwayMins;
         hrsPerYear = +yearMinsToHours;
         console.log("TakeAwayMins "+takeAwayMins);
-        console.log("MinResultYear "+minPerYear);
+        console.log("MinResultYear "+minsPerYear);
         console.log("HrsResultsYear "+hrsPerYear);
     }
-    console.log("C365D: Results "+hrsPerYear+"hrs "+minPerYear+"mins");
+    console.log("C365D: Results "+hrsPerYear+"hrs "+minsPerYear+"mins");
     //let totalMinutes = (hrsYearCalc * 60)+ +minsYearCalc;
     let days = calcDays(minsYearCalc);
     //set Year Days for LifeTime calcDays
@@ -193,16 +193,13 @@ function outputResults()
     {
         cardDay.classList.add("resultsCard");
             cardDay.innerHTML = `
-                <h3>Results</h3>
-                <p>You Spend...</p>
-                <p>${hrsPerWeek} hrs ${minsPerWeek} mins a week staring at a screen, or
-                ${daysPerWeek} days</p>
-                <p>${hrsPerMonth} hrs ${minsPerMonth} mins per month or ${daysPerMonth} days</p>
-                <p>${hrsPerYear} hrs ${minPerYear} mins per year, 
-                or ${daysPerYear} days</p>
-                <h3>Life Time</h3>
-                <p>This is ${lifeTimeDays} days across a fifty year adult lifetime</p>
-                <p>This is <strong> ${lifeTimeYears} years </strong> of you life staring at your Phone Screen</p>
+                <h3>📊 Your Screen Time Summary</h3>
+                <p><strong>Weekly:</strong> ⏰ <span>${hrsPerWeek} hrs ${minsPerWeek} mins</span> or <span>${daysPerWeek} days</span></p>
+                <p><strong>Monthly:</strong> 📅 <span>${hrsPerMonth} hrs ${minsPerMonth} mins</span> or <span>${daysPerMonth} days</span></p>
+                <p><strong>Yearly:</strong> 📆 <span>${hrsPerYear} hrs ${minsPerYear} mins</span> or <span>${daysPerYear} days</span></p>
+                <hr>
+                <h3>📈 Over a 50-Year Lifetime</h3>
+                <p>You could spend up to <strong>${lifeTimeDays} days</strong> (that’s around <strong>${lifeTimeYears} years</strong>) on screens.</p>
             `;
         output.appendChild(cardDay);
     }
@@ -210,16 +207,14 @@ function outputResults()
     {
         cardDay.classList.add("resultsCard");
             cardDay.innerHTML = `
-                <h3>Results</h3>
-                <p>You Spend...</p>
-                <p>${hrsPerWeek} hrs ${minsPerWeek} mins a week staring at a screen, or
-                ${daysPerWeek} days</p>
-                <p>${hrsPerMonth} hrs ${minsPerMonth} mins per month or ${daysPerMonth} days</p>
-                <p>${hrsPerYear} hrs ${minPerYear} mins per year, 
-                or ${daysPerYear} days</p>
-                <h3>Rest of you life...</h3>
-                <p>If you continue the same it will be ${restOfYourLifeScreenTime} years of your remaining life </p>
-                <p>Are you OK with that?</p>
+                <h3>📊 Your Screen Time Summary</h3>
+                <p><strong>Weekly:</strong> ⏰ <span>${hrsPerWeek} hrs ${minsPerWeek} mins</span> or <span>${daysPerWeek} days</span></p>
+                <p><strong>Monthly:</strong> 📅 <span>${hrsPerMonth} hrs ${minsPerMonth} mins</span> or <span>${daysPerMonth} days</span></p>
+                <p><strong>Yearly:</strong> 📆 <span>${hrsPerYear} hrs ${minsPerYear} mins</span> or <span>${daysPerYear} days</span></p>
+                <hr>
+                <h3>🧭 Lifetime Outlook</h3>
+                <p>If nothing changes, you’ll spend <strong>${restOfYourLifeScreenTime} years</strong> of your remaining life on screens.</p>
+                    <p>😮 Are you okay with that?</p>
             `;
         output.appendChild(cardDay);
     }
